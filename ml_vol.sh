@@ -6,5 +6,6 @@ stump_pid="$(pgrep -a -n stumpwm)"
 # while stumpwm is still running
 while kill -0 "$stump_pid" > /dev/null 2>&1; do
     /usr/sbin/mixer -s vol | sed 's/vol [0-9]*://'
+    printf "\n"
     sleep "$interval"
 done
