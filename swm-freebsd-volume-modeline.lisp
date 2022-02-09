@@ -23,7 +23,7 @@
     (set-vol-stream))
   (when (listen *vol-stream*)
     (setf *vol-percent* (read-line *vol-stream* nil "")))
-  (format nil "~3a" *vol-percent*))
+  (format nil "~1,2f" *vol-percent*))
 
 ;; Install formatter
 (stumpwm::add-screen-mode-line-formatter #\v #'fmt-freebsd-volume-modeline-percent)

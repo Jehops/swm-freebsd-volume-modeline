@@ -12,7 +12,7 @@ stump_pid="$(pgrep -anf -U "$(id -u)" "sbcl .*(stumpwm:stumpwm)")"
 
 # while stumpwm is still running
 while kill -0 "$stump_pid" > /dev/null 2>&1; do
-    /usr/sbin/mixer -s vol | sed 's/vol [0-9]*://'
-    printf "\n"
+    vol=$(mixer -o vol.volume | sed -e 's/vol\.volume=[0-9.]*://')
+    printf "%1.2f\n" "$vol"
     sleep "$interval"
 done
